@@ -1,15 +1,11 @@
-/* ==========================================
-   LIVRARIA ONLINE — Estilos com Acessibilidade
-   ========================================== */
 
-/* Reset básico */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Variáveis de cor com contraste adequado (WCAG AA: mínimo 4.5:1) */
+
 :root {
   --color-bg: #f9f6f0;
   --color-primary: #2c1810;      /* Marrom escuro — contraste alto */
@@ -29,10 +25,7 @@ body {
   font-size: 16px; /* Base >= 16px recomendado por WCAG */
 }
 
-/* ==========================================
-   SKIP LINK — Acessibilidade: pular navegação
-   Invisível por padrão, visível ao receber foco (Tab)
-   ========================================== */
+
 .skip-link {
   position: absolute;
   top: -100px;
@@ -53,11 +46,7 @@ body {
   top: 0;
 }
 
-/* ==========================================
-   FOCO VISÍVEL — WCAG 2.4.7 (Nível AA)
-   Todos os elementos interativos devem ter
-   indicador de foco claramente visível
-   ========================================== */
+
 :focus-visible {
   outline: 3px solid var(--color-focus);
   outline-offset: 3px;
@@ -69,10 +58,7 @@ body {
   outline: none;
 }
 
-/* ==========================================
-   SR-ONLY — Conteúdo visível apenas para
-   leitores de tela (Screen Reader Only)
-   ========================================== */
+
 .sr-only {
   position: absolute;
   width: 1px;
