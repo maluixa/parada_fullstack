@@ -1,0 +1,356 @@
+/* ==========================================
+   LIVRARIA ONLINE — Estilos com Acessibilidade
+   ========================================== */
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Variáveis de cor com contraste adequado (WCAG AA: mínimo 4.5:1) */
+:root {
+  --color-bg: #f9f6f0;
+  --color-primary: #2c1810;      /* Marrom escuro — contraste alto */
+  --color-accent: #c0392b;       /* Vermelho — usado com parcimônia */
+  --color-text: #1a1a1a;         /* Texto principal — máximo contraste */
+  --color-text-muted: #555555;   /* Texto secundário — ainda >4.5:1 */
+  --color-surface: #ffffff;
+  --color-border: #d0c8bc;
+  --color-focus: #0057b7;        /* Azul forte para outline de foco */
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 16px; /* Base >= 16px recomendado por WCAG */
+}
+
+/* ==========================================
+   SKIP LINK — Acessibilidade: pular navegação
+   Invisível por padrão, visível ao receber foco (Tab)
+   ========================================== */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 0;
+  background: var(--color-focus);
+  color: #ffffff;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  z-index: 9999;
+  text-decoration: none;
+  border-radius: 0 0 4px 0;
+  transition: top 0.2s;
+}
+
+/* Fica visível quando recebe foco pelo teclado */
+.skip-link:focus {
+  top: 0;
+}
+
+/* ==========================================
+   FOCO VISÍVEL — WCAG 2.4.7 (Nível AA)
+   Todos os elementos interativos devem ter
+   indicador de foco claramente visível
+   ========================================== */
+:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* Remove outline padrão feio apenas quando não for teclado */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ==========================================
+   SR-ONLY — Conteúdo visível apenas para
+   leitores de tela (Screen Reader Only)
+   ========================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================
+   NAVEGAÇÃO
+   ========================================== */
+nav {
+  background-color: var(--color-primary);
+  color: #ffffff;
+  padding: 16px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-brand a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* Badge do carrinho — aria-hidden="true" no HTML (decorativo) */
+.cart-badge {
+  display: inline-block;
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: 20px;
+  margin-left: 6px;
+}
+
+/* ==========================================
+   CONTEÚDO PRINCIPAL
+   ========================================== */
+.main-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* ==========================================
+   LISTA DE PRODUTOS
+   ========================================== */
+main h1 {
+  font-size: 2rem;
+  color: var(--color-primary);
+  margin-bottom: 28px;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 12px;
+}
+
+.product-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 28px;
+}
+
+.product-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: box-shadow 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.product-card img {
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.product-card h2 {
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  text-align: center;
+}
+
+.product-card p {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.price {
+  font-size: 1.1rem !important;
+  font-weight: bold;
+  color: var(--color-text) !important;
+}
+
+/* ==========================================
+   BOTÕES — Tamanho mínimo 44x44px (WCAG 2.5.5)
+   Contraste de cor adequado
+   ========================================== */
+button {
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px 18px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-family: inherit;
+}
+
+button:hover {
+  background-color: #4a2c1a;
+}
+
+button:active {
+  background-color: var(--color-accent);
+}
+
+/* ==========================================
+   CARRINHO
+   ========================================== */
+section[role="region"] h1 {
+  font-size: 1.8rem;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--color-border);
+  padding-bottom: 12px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--color-border);
+  flex-wrap: wrap;
+}
+
+.cart-item span {
+  font-size: 1rem;
+}
+
+.cart-item button {
+  background-color: var(--color-accent);
+  font-size: 0.9rem;
+  padding: 8px 14px;
+  min-height: 44px;
+}
+
+.cart-item button:hover {
+  background-color: #96281b;
+}
+
+.cart-total {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  text-align: right;
+}
+
+.checkout-btn {
+  display: block;
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  font-size: 1.1rem;
+  background-color: #1a7a3a;  /* Verde com contraste adequado */
+  text-align: center;
+  min-height: 48px;
+}
+
+.checkout-btn:hover {
+  background-color: #145c2c;
+}
+
+/* ==========================================
+   RODAPÉ
+   ========================================== */
+footer {
+  background-color: var(--color-primary);
+  color: #e8e0d8;
+  text-align: center;
+  padding: 24px;
+  margin-top: 40px;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* ==========================================
+   RESPONSIVIDADE
+   ========================================== */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .product-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 400px) {
+  .product-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   MODO DE ALTO CONTRASTE
+   Suporte ao prefers-contrast para usuários
+   que precisam de maior contraste visual
+   ========================================== */
+@media (prefers-contrast: high) {
+  :root {
+    --color-bg: #ffffff;
+    --color-text: #000000;
+    --color-primary: #000000;
+    --color-border: #000000;
+  }
+
+  button {
+    border: 2px solid #000000;
+  }
+}
+
+/* ==========================================
+   MODO DE MOVIMENTO REDUZIDO
+   Respeita preferência do usuário por
+   menos animações (vestibulopatias, epilepsia)
+   ========================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
