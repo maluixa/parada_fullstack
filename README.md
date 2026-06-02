@@ -1,6 +1,6 @@
 # Livraria Online — Acessibilidade Web
 
-Projeto desenvolvido como atividade prática da disciplina de Desenvolvimento Web, com foco na implementação de melhorias de acessibilidade seguindo as diretrizes **WCAG 2.1**.
+Projeto desenvolvido como atividade prática da disciplina de Desenvolvimento Full Stack, com foco na implementação de melhorias de acessibilidade seguindo as diretrizes **WCAG 2.1**.
 
 ## Como executar
 
